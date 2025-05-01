@@ -1,0 +1,16 @@
+
+.callout[data-callout="1"] {
+    --callout-color: 240, 160, 100;
+    --callout-icon: lucide-help-circle;
+}
+
+.callout[data-callout="2"] {
+    --callout-color: 120, 187, 187;
+    --callout-icon: lucide-book;
+}
+
+
+.callout[data-callout="3"] {
+	--callout-color: 240, 110, 110;
+    --callout-icon: message-square-warning;
+}
