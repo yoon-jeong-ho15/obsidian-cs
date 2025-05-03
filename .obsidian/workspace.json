@@ -13,40 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "에러노트/퀼 Delta를 db에 넣기.md",
+                "file": "에러노트/nextjs에러/ReferenceError-document is not defined.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "퀼 Delta를 db에 넣기"
+              "title": "ReferenceError-document is not defined"
             }
           },
           {
-            "id": "24fc69baa6003b77",
+            "id": "b9747817707337b8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TypeScript/Type.md",
+                "file": "Next.js/pre-rendering.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Type"
-            }
-          },
-          {
-            "id": "dd61da160450f995",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "TypeScript/Class(ts).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Class(ts)"
+              "title": "pre-rendering"
             }
           }
         ]
@@ -207,10 +193,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b613ca5bb1ea25bc",
+  "active": "c546c3fc0070028c",
   "lastOpenFiles": [
-    "에러노트/ts에러/ts(2322).md",
+    "Next.js/pre-rendering.md",
+    "에러노트/nextjs에러/ReferenceError-document is not defined.md",
+    "README.md",
     "에러노트/퀼 Delta를 db에 넣기.md",
+    "Next.js/dynamic.md",
+    "에러노트/nextjs에러",
+    "에러노트/ts에러/ts(2322).md",
     "에러노트/ts에러/ts(2769).md",
     "에러노트/ts에러/ts(2345).md",
     "에러노트/ts에러/ts(1361).md",
@@ -218,7 +209,6 @@
     "Next.js",
     "TypeScript/Class(ts).md",
     "TypeScript/Type.md",
-    "README.md",
     "무제 폴더",
     "typescript/TypeScript.md",
     "에러노트/ts에러",
