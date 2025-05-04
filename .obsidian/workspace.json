@@ -8,7 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c546c3fc0070028c",
+            "id": "84e66867e0744670",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "프로젝트 기록/yoon-pf.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "yoon-pf"
+            }
+          },
+          {
+            "id": "ce531edf81494b80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "에러노트/Supabase/supabaseUrl is required.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "supabaseUrl is required"
+            }
+          },
+          {
+            "id": "8e3b05a46f373dc4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,20 +50,31 @@
             }
           },
           {
-            "id": "b9747817707337b8",
+            "id": "385bddefd3c78297",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Next.js/pre-rendering.md",
+                "file": "사전/Next.js(react)/Server Components.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "pre-rendering"
+              "title": "Server Components"
+            }
+          },
+          {
+            "id": "be4d145aa3f25300",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -193,27 +232,38 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c546c3fc0070028c",
+  "active": "8e3b05a46f373dc4",
   "lastOpenFiles": [
-    "Next.js/pre-rendering.md",
+    "사전/Next.js(react)/dynamic().md",
     "에러노트/nextjs에러/ReferenceError-document is not defined.md",
-    "README.md",
+    "에러노트/Supabase/supabaseUrl is required.md",
+    "프로젝트 기록/yoon-pf.md",
+    "사전/Next.js(react)/Server Components.md",
     "에러노트/퀼 Delta를 db에 넣기.md",
-    "Next.js/dynamic.md",
-    "에러노트/nextjs에러",
-    "에러노트/ts에러/ts(2322).md",
+    "프로젝트 기록",
+    "사전",
+    "에러노트/Supabase",
+    "에러노트/lint warning/'ref.current' will likely have changed.md",
+    "에러노트/lint warning/useEffect has a missing dependency.md",
     "에러노트/ts에러/ts(2769).md",
     "에러노트/ts에러/ts(2345).md",
+    "에러노트/ts에러/ts(2322).md",
     "에러노트/ts에러/ts(1361).md",
-    "Next.js/useRef.md",
-    "Next.js",
-    "TypeScript/Class(ts).md",
-    "TypeScript/Type.md",
+    "사전/Next.js(react)/pre-rendering.md",
+    "사전/Next.js(react)/cleanup function.md",
+    "사전/TypeScript/Type.md",
+    "사전/Next.js(react)/useEffect.md",
+    "에러노트/lint warning",
+    "README.md",
+    "에러노트/nextjs에러",
+    "사전/Next.js(react)/useRef.md",
+    "사전/Next.js(react)",
+    "사전/TypeScript/Class(ts).md",
     "무제 폴더",
     "typescript/TypeScript.md",
     "에러노트/ts에러",
     "에러노트",
-    "TypeScript",
+    "사전/TypeScript",
     "Welcome.md"
   ]
 }

@@ -1,5 +1,5 @@
 ### 에러문
-Error occurred prerendering page "/more/board/write". Read more: nextjs.org\/docs/messages/prerender-error
+Error occurred *prerendering* page "/more/board/write". Read more: nextjs.org\/docs/messages/prerender-error
 ReferenceError: document is not defined
 at /vercel/path0/.next/server/chunks/112.js:1:81396
 at Array.forEach (<anonymous\>)
@@ -103,6 +103,34 @@ export default function Editor({ ref }: { ref: RefObject<Quill | null> }) {
 ```
 ### 설명
 `write/page.tsx`를 프리렌더링 할 수 없어서 발생하는 에러. [[pre-rendering]]
-페이지를 미리 만들어 둘 때 거기서 불러온 quill 라이브러리가 `document`객체를 사용하는 DOM API를 필요로 한다. 가령 quill 라이브러리 안에서 `document.getElementById` 와 같은 자바스크립트 코드를 사용할 수 있다.
+페이지를 미리 만들어 둘 때 거기서 불러온 quill 라이브러리가 `document`객체를 사용하는 DOM API를 필요로 한다. (가령 quill 라이브러리 안에서 `document.getElementById` 와 같은 자바스크립트 코드를 사용할 수 있다)
 즉 quill을 실질적으로 사용하는 `editor.tsx`에서 퀼 라이브러리를 불러와서 문제가 되는것.
+`write/page.tsx`에서도 quill를 불러오지만 여기서 객체를 생성하지는 않았기 때문에 문제가 되지 않았다.
+
+#### quillRef
+그런데 애초에 quillRef를 왜 페이지에서 만들어서 전달해야했을까?
+
+#### dynamic
+동적 로딩을 구현하는 방법에는 두가지 방법이 있다. 
+1. 페이지에서 [[dynamic()]]을 사용해서 하는 방법. 
+```tsx
+const DynamicEditor = dynamic(() => import('./editor'), {
+  ssr: false,
+  loading: () => <div className="로딩 상태 UI"></div>
+});
+```
+2. 에디터 컴포넌트에서 하는 동적 로딩
+```tsx
+import Quill from "quill"; //이 방법이 정적 로딩. 
+
+useEffect(() => {
+  const loadQuill = async () => {
+    const QuillModule = await import('quill');
+    const Quill = QuillModule.default;
+    // Quill 초기화...
+  };
+  loadQuill();
+}, []);
+```
+
 
