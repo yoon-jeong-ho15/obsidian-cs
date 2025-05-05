@@ -1,3 +1,5 @@
+# yoon-pf
+## /board/write/page.tsx
 ### 에러문
 Error occurred *prerendering* page "/more/board/write". Read more: nextjs.org\/docs/messages/prerender-error
 ReferenceError: document is not defined
