@@ -8,27 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "26eca645381962b1",
+            "id": "7adbc44eb6f2aab4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "프로젝트 기록/yoon-pf.md",
+                "file": "사전/Next.js(+react)/useEffect.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "yoon-pf"
+              "title": "useEffect"
             }
           },
           {
-            "id": "be4d145aa3f25300",
+            "id": "f5dd5a167905032d",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "에러노트/lint warning/useEffect has a missing dependency.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "useEffect has a missing dependency"
             }
           }
         ]
@@ -152,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "에러노트/퀼 Delta를 db에 넣기.md",
+                "file": "사전/Next.js(+react)/useEffect.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 퀼 Delta를 db에 넣기"
+              "title": "Outline of useEffect"
             }
           },
           {
@@ -172,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -189,10 +193,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "26eca645381962b1",
+  "active": "cc0927542ca493e2",
   "lastOpenFiles": [
-    "에러노트/nextjs에러/ReferenceError-document is not defined.md",
+    "에러노트/lint warning/useEffect has a missing dependency.md",
+    "사전/Next.js(+react)/useEffect.md",
     "프로젝트 기록/yoon-pf.md",
+    "사전/Next.js(+react)/제어 or  비제어 컴포넌트.md",
+    "사전/Next.js(+react)/컴포넌트 생애주기.md",
+    "사전/Next.js(+react)/useState.md",
+    "사전/Next.js(+react)/cleanup function.md",
+    "사전/Next.js(+react)/useRef.md",
+    "에러노트/nextjs에러/ReferenceError-document is not defined.md",
     "에러노트/ts에러/ts(2322).md",
     "사전/JavaScript/JSON.md",
     "사전/JavaScript",
@@ -204,18 +215,14 @@
     "사전",
     "에러노트/Supabase",
     "에러노트/lint warning/'ref.current' will likely have changed.md",
-    "에러노트/lint warning/useEffect has a missing dependency.md",
     "에러노트/ts에러/ts(2769).md",
     "에러노트/ts에러/ts(2345).md",
     "에러노트/ts에러/ts(1361).md",
     "사전/Next.js(+react)/pre-rendering.md",
-    "사전/Next.js(+react)/cleanup function.md",
     "사전/TypeScript(+js)/Type.md",
-    "사전/Next.js(+react)/useEffect.md",
     "에러노트/lint warning",
     "README.md",
     "에러노트/nextjs에러",
-    "사전/Next.js(+react)/useRef.md",
     "사전/Next.js(+react)",
     "사전/TypeScript(+js)/Class(ts).md",
     "무제 폴더",

@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "type": "graph",
+      "ctime": 1746526929610,
+      "title": "Untitled Graph",
+      "options": {
+        "collapse-filter": true,
+        "search": "",
+        "showTags": false,
+        "showAttachments": false,
+        "hideUnresolved": false,
+        "showOrphans": true,
+        "collapse-color-groups": false,
+        "colorGroups": [
+          {
+            "query": "path:에러노트  ",
+            "color": {
+              "a": 1,
+              "rgb": 16384000
+            }
+          },
+          {
+            "query": "path:\"사전/TypeScript(+js)\"  ",
+            "color": {
+              "a": 1,
+              "rgb": 4530685
+            }
+          },
+          {
+            "query": "path:\"사전/Next.js(+react)\"  ",
+            "color": {
+              "a": 1,
+              "rgb": 0
+            }
+          },
+          {
+            "query": "path:\"프로젝트 기록\"  ",
+            "color": {
+              "a": 1,
+              "rgb": 5431378
+            }
+          }
+        ],
+        "collapse-display": true,
+        "showArrow": false,
+        "textFadeMultiplier": 0,
+        "nodeSizeMultiplier": 1,
+        "lineSizeMultiplier": 1,
+        "collapse-forces": true,
+        "centerStrength": 0.518713248970312,
+        "repelStrength": 10,
+        "linkStrength": 1,
+        "linkDistance": 250,
+        "scale": 0.60863007756403,
+        "close": false
+      }
+    }
+  ]
+}

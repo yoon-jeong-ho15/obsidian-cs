@@ -31,6 +31,56 @@ export async function createBoard(title: string, content: Delta | null) {
 }
 ```
 serialization이 문제라고 한다.
+## 뷰어에서 에디터가 두개가 됨.
+### 증상
+처음에 게시글 조회에 들어가면 `<div class="ql-container">`가 두개가 생김.
+새로고침하면 하나만 남음.
+### 코드
+```tsx
+"use client";
+import Quill from "quill";
+import { useRef, useEffect } from "react";
+import "quill/dist/quill.bubble.css";
+
+export default function Viewer({ content }: { content: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const quillRef = useRef<Quill | null>(null);
+
+  useEffect(() => {
+    console.log("useEffect()");
+    console.log("content:", typeof content, content);
+    let quill: Quill | null = null;
+    let container: HTMLDivElement | null = null;
+
+    const loadQuill = async () => {
+      console.log("loadQuill()");
+      if (!containerRef.current) return;
+      const QuillModule = await import("quill");
+      const Quill = QuillModule.default;
+
+      container = containerRef.current;
+      const editorContainer = container.appendChild(
+        document.createElement("div")
+      );
+      quill = new Quill(editorContainer, {
+        theme: "bubble",
+      });
+      quill.enable(false);
+      quillRef.current = quill;
+      const delta = JSON.parse(content);
+      quill.setContents(delta);
+    };
+    loadQuill();
+  });
+
+  return (
+    <div className="h-full overflow-auto">
+      <div ref={containerRef} className="ml-20 mr-30 px-15 outline-none" />
+    </div>
+  );
+}
+
+```
 
 # 수파베이스
 ## 클라이언트 컴포넌트에서 데이터 패칭
@@ -45,7 +95,9 @@ serialization이 문제라고 한다.
 	일단 간단한 방법인거 같은데, 페이지를 그냥 껍데기로만 쓰는거같아서 맘에들지 않는다.
 3. 사실 가장 익숙한 방법으로 `action.ts`에서 데이터를 가져오면 되는데, 그러면 똑같은 기능의 함수를 두 개 사용하는것이라 맘에 들지 않는다. 데이터 가져오는건 전부 `data.ts`에서 하고싶다. 
 ### 클라이언트 아일랜드 패턴?
-
+`/[id]/edit/page.tsx`에서는 이 패턴을 사용해봤다.
+page에서 기본적인 ui를 다 가지고 있고,
+form태그 안에 넣어두어서 form자체로 내용이 입력되도록. [[제어 or  비제어 컴포넌트]]
 
 # 프리랜더링 오류
 [[ReferenceError-document is not defined#yoon-pf]]

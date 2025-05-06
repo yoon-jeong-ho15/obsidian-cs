@@ -1,3 +1,81 @@
+# 개념
+https://react.dev/reference/react/useRef
+"React Hook that lets you reference a value that’s not needed for rendering."
+렌더링에 필요하지 않은 값을 참조할 때 사용하는 훅.
+
+useRef는 RefObject를 반환한다. 
+RefObject에는 하나의 속성만 있다 : current.
+`useRef(initialValue)`를 사용하면 `RefObject.current == initialValue`가 된다.
+
+여기까지 보면 state랑 똑같지만 차이점이 존재한다.
+ref를 변경하는것은 리랜더링을 일으키지 않는다.
+
+## 예시
+### 1
+```jsx
+export default function Counter() {
+  let ref = useRef(0);
+
+  function handleClick() {
+    ref.current = ref.current + 1;
+    alert('You clicked ' + ref.current + ' times!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me!
+    </button>
+  );
+}
+```
+state를 사용해서도 똑같은 기능을 구현할 수 있는데,
+state에 값을 넣고 그걸 alert 하면 실제로는 state가 화면에 보여지지 않는다 하더라도 컴포넌트가 계속 리랜더링 되지만 ref는 그렇지만은 않다.
+### 2
+```jsx
+import { useState, useRef } from 'react';
+
+export default function Stopwatch() {
+  const [startTime, setStartTime] = useState(null);
+  const [now, setNow] = useState(null);
+  const intervalRef = useRef(null);
+
+  function handleStart() {
+    setStartTime(Date.now());
+    setNow(Date.now());
+
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setNow(Date.now());
+    }, 10);
+  }
+
+  function handleStop() {
+    clearInterval(intervalRef.current);
+  }
+
+  let secondsPassed = 0;
+  if (startTime != null && now != null) {
+    secondsPassed = (now - startTime) / 1000;
+  }
+
+  return (
+    <>
+      <h1>Time passed: {secondsPassed.toFixed(3)}</h1>
+      <button onClick={handleStart}>
+        Start
+      </button>
+      <button onClick={handleStop}>
+        Stop
+      </button>
+    </>
+  );
+}
+```
+여기서 `useRef`를 사용해야한 이유는?
+setInterval은 intervalID를 반환하는데 그걸로 clearInterval로 멈춰준다.
+근데 시작할 때 마다 새로운 intervalID를 받는데 그때마다 리렌더링을 할 필요는 없기 때문에 useRef 사용.
+그리고 다른 차이가 있다. [[useState#비동기 적용]]
+
 # 예시
 ## yoon-pf에서
 공식 문서에서는 `app.js`에서 useRef를 사용해 quillRef를 만들어 `editor.js`로 전달하던데,
@@ -85,4 +163,4 @@ ref 사용
 5. **제한된 제어**: 부모에서 에디터의 세부 기능에 접근하기 어렵습니다.
 6. **성능 오버헤드**: 상태 업데이트로 인한 리렌더링이 발생할 수 있습니다.
 
-ref는 
+ref는 #

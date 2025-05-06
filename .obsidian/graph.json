@@ -8,17 +8,31 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:\"Next.js(react)\"  ",
+      "query": "path:에러노트  ",
+      "color": {
+        "a": 1,
+        "rgb": 16384000
+      }
+    },
+    {
+      "query": "path:\"사전/TypeScript(+js)\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 4530685
+      }
+    },
+    {
+      "query": "path:\"사전/Next.js(+react)\"  ",
       "color": {
         "a": 1,
         "rgb": 0
       }
     },
     {
-      "query": "path:TypeScript  ",
+      "query": "path:\"프로젝트 기록\"  ",
       "color": {
         "a": 1,
-        "rgb": 200091
+        "rgb": 5431378
       }
     }
   ],
@@ -32,6 +46,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.9082596730979372,
+  "scale": 0.6086300775640299,
   "close": true
 }
