@@ -43,7 +43,27 @@ https://react.dev/reference/react/useEffect
 > - 리액트 외부의 전역 변수
 
 참고 : [[useEffect has a missing dependency]]. useEffect안에서 사용되고 있고 && reactive value라면 의존성 배열에 포함되어야 한다.
+#### 빈 배열 vs 아예 넘기지 않기
+```jsx
+// []
+useEffect(() => {
+// ...
+}, []); // Does not run again (except once in development)
 
+// 아예 x
+function ChatRoom({ roomId }) {
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }); // Always runs again
+```
+아예 넘기지 않는 경우에는 useEffect 안에서 사용하는 변수들이 바뀔 때마다 다시 실행된다.
 ## 용례
 ### 외부 시스템과 연결할 때
 리액트 내부 요소들이 아닌 리액트 외의 요소들이라는 의미에서 외부 시스템들과 상호작용하는 컴포넌트가 있을 수 있다. 가령 외부 api라던가 네트워크처럼.
