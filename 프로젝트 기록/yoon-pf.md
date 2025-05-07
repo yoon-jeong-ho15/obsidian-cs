@@ -81,6 +81,55 @@ export default function Viewer({ content }: { content: string }) {
 }
 
 ```
+### 설명
+콘솔에도 console.log들이 두번씩 찍힌다. 이게 useEffect가 두번 실행된다는 말인거 같은데. 
+찾아보니까 개발환경에서는 useEffect가 두번 실행된다고 한다. [[Strict Mode]]
+실제로 vercel의 배포판에서 보니까 게시글이 두번 등장하지 않음.
+
+## editor-wrapper에서 수정시 content 안넘어감
+```tsx
+"use client";
+import Quill from "quill";
+import { useEffect, useRef } from "react";
+import Editor from "@/app/more/board/write/editor";
+
+export default function EditorWrapper({
+  initialValue,
+}: {
+  initialValue: string;
+}) {
+  const quillRef = useRef<Quill | null>(null);
+
+  useEffect(() => {
+    if (!quillRef.current) return;
+    try {
+      const delta = JSON.parse(initialValue);
+      quillRef.current.setContents(delta);
+    } catch (error) {
+      console.error("Error parsing initialValue", error);
+    }
+  }, [quillRef.current, initialValue]);
+
+  useEffect(() => {
+    const form = document.querySelector("form");
+    form?.addEventListener("submit", () => {
+      if (quillRef.current) {
+        const delta = quillRef.current.getContents();
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "content";
+        input.value = JSON.stringify(delta);
+        form.appendChild(input);
+      }
+    });
+  });
+  return <Editor ref={quillRef} />;
+}
+
+```
+왜 content가 추가가 안되느냐 하면 이벤트 리스너가  제출 이후에 등록되서 그런다고한다.
+문제점 1) 여기에 의존성 배열이 없고 2) 이벤트 리스너를 해제하지 않고 추가하고 3)이벤트 핸들러가 너무 늦게 실행한다.
+해결책 : content를 담을 input hidden을 넣고, useState로 값을 입력해준다.
 
 # 수파베이스
 ## 클라이언트 컴포넌트에서 데이터 패칭
@@ -104,3 +153,36 @@ form태그 안에 넣어두어서 form자체로 내용이 입력되도록. [[제
 `/write/page.tsx`와 `/[id]/page.tsx`에서 다른 방식으로 동적로딩을 구현했다.
 왜그랬냐하면, 게시글 조회 페이지는 쿼리를 해야되기때문에 서버컴포넌트여야 했기 때문에.
 dynamic() ssr:false는 서버 컴포넌트에서 불가능하다고.
+
+# 게시글 작성 후, redirect
+### 증상
+딱히 증상은 없음. 그냥 콘솔에 에러문구가 뜬다.
+게시글 수정한뒤에 redirect하는건 에러가 안뜨는데 작성에서만 뜬다. 왜?
+
+### 에러문
+Uncaught (in promise) Error: NEXT_REDIRECT
+    getRedirectError redirect.ts:21
+    next NextJS
+    promise callback\*serverActionReducer server-action-reducer.ts:227
+    clientReducer router-reducer.ts:50
+    action app-router-instance.ts:211
+    runAction app-router-instance.ts:98
+    dispatchAction app-router-instance.ts:163
+    dispatch app-router-instance.ts:209
+    next NextJS
+    startTransition react-dom-client.development.js:7842
+    dispatch use-action-queue.ts:45
+    dispatchAppRouterAction use-action-queue.ts:22
+    NextJS 3
+    callServer app-call-server.ts:6
+    action react-server-dom-turbopack-client.browser.development.js:2715
+    createBoard actions.ts:35
+    handleSave page.tsx:24
+    executeDispatch react-dom-client.development.js:16501
+    runWithFiberInDEV react-dom-client.development.js:847
+    processDispatchQueue react-dom-client.development.js:16551
+    next NextJS
+    batchedUpdates$1 react-dom-client.development.js:3262
+    dispatchEventForPluginEventSystem react-dom-client.development.js:16705
+    dispatchEvent react-dom-client.development.js:20816
+    dispatchDiscreteEvent react-dom-client.development.js:20783
