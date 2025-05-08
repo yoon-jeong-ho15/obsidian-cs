@@ -22,31 +22,17 @@
             }
           },
           {
-            "id": "7628d1e45d6b7924",
+            "id": "23049d1170608ba4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "사전/Next.js(+react)/Strict Mode.md",
+                "file": "에러노트/sqlite 에러.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Strict Mode"
-            }
-          },
-          {
-            "id": "f5dd5a167905032d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "에러노트/lint warning/useEffect has a missing dependency.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "useEffect has a missing dependency"
+              "title": "sqlite 에러"
             }
           }
         ]
@@ -209,8 +195,16 @@
   },
   "active": "d9fb836cc8a9b39c",
   "lastOpenFiles": [
+    "에러노트/MIME Type mismatch.md",
+    "에러노트/sqlite 에러.md",
+    "사전/Node(+express)/app.use.md",
+    "에러노트/Untitled",
+    "2025-05-08.md",
     "사전/Next.js(+react)/Strict Mode.md",
+    "에러노트/Express 에러",
     "프로젝트 기록/yoon-pf.md",
+    "사전/Express.md",
+    "사전/Node(+express)",
     "에러노트/lint warning/useEffect has a missing dependency.md",
     "사전/Next.js(+react)/useEffect.md",
     "사전/Next.js(+react)/제어 or  비제어 컴포넌트.md",
@@ -234,16 +228,8 @@
     "에러노트/ts에러/ts(2345).md",
     "에러노트/ts에러/ts(1361).md",
     "사전/Next.js(+react)/pre-rendering.md",
-    "사전/TypeScript(+js)/Type.md",
     "에러노트/lint warning",
-    "README.md",
     "에러노트/nextjs에러",
-    "사전/Next.js(+react)",
-    "사전/TypeScript(+js)/Class(ts).md",
-    "무제 폴더",
-    "typescript/TypeScript.md",
-    "에러노트/ts에러",
-    "에러노트",
-    "Welcome.md"
+    "사전/Next.js(+react)"
   ]
 }

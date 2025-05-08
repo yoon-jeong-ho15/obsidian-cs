@@ -29,10 +29,17 @@
       }
     },
     {
-      "query": "path:\"프로젝트 기록\"  ",
+      "query": "path:\"사전/Node(+express)\"  ",
       "color": {
         "a": 1,
         "rgb": 5431378
+      }
+    },
+    {
+      "query": "path:\"프로젝트 기록\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431473
       }
     }
   ],

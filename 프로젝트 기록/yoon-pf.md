@@ -1,5 +1,5 @@
 Next.js + supabase 로 진행한 프로젝트
-
+라이브러리 : Quill, Socket.IO
 # 퀼
 ## delta와 디비
 ### 증상
@@ -186,3 +186,11 @@ Uncaught (in promise) Error: NEXT_REDIRECT
     dispatchEventForPluginEventSystem react-dom-client.development.js:16705
     dispatchEvent react-dom-client.development.js:20816
     dispatchDiscreteEvent react-dom-client.development.js:20783
+
+# 채팅
+Socket.IO라는걸 사용해보려고 했는데, vercel에서는 websocket 서버를 배포할 수 없다고.
+https://socket.io/how-to/use-with-nextjs
+https://nextjs.org/docs/pages/guides/custom-server
+
+그래서 pusher라는 서비스를 이용하거나.
+https://vercel.com/guides/deploying-pusher-channels-with-vercel
