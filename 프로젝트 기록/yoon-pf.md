@@ -194,3 +194,9 @@ https://nextjs.org/docs/pages/guides/custom-server
 
 그래서 pusher라는 서비스를 이용하거나.
 https://vercel.com/guides/deploying-pusher-channels-with-vercel
+
+sse (server sent event)
+https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events
+https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+
+swr (stale while revalidate)
