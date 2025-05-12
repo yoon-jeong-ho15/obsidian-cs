@@ -65,7 +65,7 @@ export default function Editor({ ref }: { ref: RefObject<Quill | null> }) {
 }
 ```
 ### 설명
-클린업 함수[[cleanup function]]는 지금 ref가 변하거나 컴포넌트가 사라질 때 실행된다.
+클린업 함수는 지금 ref가 변하거나 컴포넌트가 사라질 때 실행된다.
 여기서 quill 객체나 containerRef.cuurent 가 null이나 undefined가 아닌 경우에는 ref를 비우고 컨테이너 안에도 innerHTML을 비운다.
 여기서 containerRef의 값이 클린업 함수 실행되는 순간에 변했을 수 있기 때문에 경고를 한다는 것인데.
 #### quill vs containRef
