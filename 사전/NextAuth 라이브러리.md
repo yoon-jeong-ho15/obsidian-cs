@@ -1,3 +1,5 @@
+# 개념
+
 # 예시
 ## yoon-pf
 ### auth.ts
@@ -229,3 +231,17 @@ export async function signIn(
 그런데 credentials를 사용중이라면 "signin" 대신 "callback" 주소로
 post 방식 요청을 보낸다. `Auth()`함수에서.
 그리고 완료되면 `const cookeiJar = await cookies()` 와 그밑의 코드들을 통해 쿠키와 토큰을 만들어 브라우저에 저장한다.
+
+#### jwt
+`auth.ts`의 `authorize`함수에 적힌대로 아이디와 비밀번호가 맞으면 `user` 객체를 반환한다.
+이걸 가지고 jwt에 `token`을 만들고 이걸 가지고 `session`에 `user`를 넣는것.
+
+### 클라이언트 signIn
+
+### \[...nextauth]/route.ts
+```ts
+import { handlers } from "@/auth";
+export const { GET, POST } = handlers;
+```
+이게 없어서 `useSession()` 이 계속 "GET /api/auth/session 404 in 146ms" 404 에러가 뜬것.
+[[NextAuth.js 에러#profile, chat]]

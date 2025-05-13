@@ -151,8 +151,9 @@ form태그 안에 넣어두어서 form자체로 내용이 입력되도록. [[제
 # 프리랜더링 오류
 [[ReferenceError-document is not defined#yoon-pf]]
 `/write/page.tsx`와 `/[id]/page.tsx`에서 다른 방식으로 동적로딩을 구현했다.
-왜그랬냐하면, 게시글 조회 페이지는 쿼리를 해야되기때문에 서버컴포넌트여야 했기 때문에.
-dynamic() ssr:false는 서버 컴포넌트에서 불가능하다고.
+왜그랬냐하면, 게시글 조회 페이지는 쿼리를 해야되기때문에 서버컴포넌트여야 했기 때문인데
+[[dynamic()]]자체는 서버에서도 사용 가능하지만  ssr:false는 서버 컴포넌트에서 불가능하다고.
+그러나 게시글 작성 페이지는 서버 컴포넌트일 필요가 업어서 클라이언트 컴포넌트로 만들고 `ssr:false`으로 동적 로딩을 했다.
 
 # 게시글 작성 후, redirect
 ### 증상
@@ -200,3 +201,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events
 https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
 
 swr (stale while revalidate)
+
+# useSession이 데이터를 가져오지 못함
+`chat/page.tsx`에서 `await auth()`로 세션을 가져옴.
+근데 `chat/chat-box.tsx`에서 `useSession()`은 세션 데이터를 가져오지 못함.
+
+[[NextAuth.js 에러#profile, chat]]
