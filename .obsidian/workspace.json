@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "테스트.md",
+                "file": "에러노트/Supabase/supabaseUrl is required.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "테스트"
+              "title": "supabaseUrl is required"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "테스트.md",
+                "file": "에러노트/Supabase/supabaseUrl is required.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 테스트"
+              "title": "Outline of supabaseUrl is required"
             }
           },
           {
@@ -195,8 +195,8 @@
   },
   "active": "5534d65aa2323f2c",
   "lastOpenFiles": [
-    "에러노트/Supabase/supabaseUrl is required.md",
     "테스트.md",
+    "에러노트/Supabase/supabaseUrl is required.md",
     "사전/Next.js(+react)/Server Components.md",
     "사전/Next.js(+react)/dynamic().md",
     "사전/NextAuth 라이브러리.md",
