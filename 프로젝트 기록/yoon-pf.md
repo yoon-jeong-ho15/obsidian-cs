@@ -1,4 +1,4 @@
-Next.js + supabase 로 진행한 프로젝트
+dfNext.js + supabase 로 진행한 프로젝트
 라이브러리 : Quill, Socket.IO
 # 퀼
 ## delta와 디비
