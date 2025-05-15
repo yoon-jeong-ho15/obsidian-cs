@@ -207,3 +207,148 @@ swr (stale while revalidate)
 근데 `chat/chat-box.tsx`에서 `useSession()`은 세션 데이터를 가져오지 못함.
 
 [[NextAuth.js 에러#profile, chat]]
+
+# 버튼 위치 고정
+## 버튼 위치 고정
+`chat-box.tsx`에서 전송버튼 위치를 부모 요소에서 `flex items-center`로 위치를 지정해줬음.
+근데 그러면 단점이 textarea에 넣는 글이 길어지면서 form의 높이가 늘어나면 버튼의 위치도 form의 가운데가 되면서 점점 올라감.
+그래서 textare의 onInput 핸들러에 버튼의 위치를 조절하는 코드를 넣었음
+```tsx
+ const handleInput = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    // Auto-resize logic
+    e.currentTarget.style.height = "auto";
+    const newHeight = Math.min(e.currentTarget.scrollHeight, 160);
+    e.currentTarget.style.height = newHeight + "px";
+
+    // Button positioning logic
+    const button = e.currentTarget.nextElementSibling as HTMLButtonElement;
+    const isMinHeight = newHeight <= 40; // min-h-10 is approximately 40px
+
+    if (button) {
+      if (isMinHeight) {
+        // Center the button when at minimum height
+        button.style.top = "50%";
+        button.style.transform = "translateY(-50%)";
+      } else {
+        // Position at bottom when growing
+        button.style.top = "auto";
+        button.style.bottom = "8px"; // Equivalent to bottom-2
+        button.style.transform = "none";
+      }
+    }
+
+    console.log(e.target.value);
+  };
+```
+이 코드는 성공적으로 버튼의 위치를 고정했지만, 처음에 렌더링되면서 지정된 위치와 조금은 달랐음.
+그래서 해결하려면 버튼의 첫 위치와 똑같아지게 정밀하게 위의 수치들을 조율하면 되지만 그건 너무 힘들다고 판단.
+그래서 클로드에게 물어보니까 `useEffect`훅을 쓰라고 함.
+```tsx
+useEffect(() => {
+    if (textareaRef.current && buttonRef.current) {
+      const textarea = textareaRef.current;
+      const button = buttonRef.current;
+      const form = textarea.parentElement;
+      
+      // Calculate the exact position where button should be fixed
+      const formRect = form.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
+      
+      // Calculate the top position (distance from top of form to center of button)
+      const topPosition = (formRect.height / 2) - (buttonRect.height / 2);
+      
+      // Fix the button at this exact position
+      button.style.top = `${topPosition}px`;
+      button.style.transform = 'none'; // No need for transform
+    }
+  }, []);
+```
+
+> [!1]- 그렇다면 만약에 이게 서버 컴포넌트라면 어떻게 해야하나?
+
+### useEffect 가 실행이 안되나?
+위의 코드를 넣고 form에서 `flex items-center`를 지워줬더니 버튼이 form 위에 바로 딱 붙었다.
+그래서 문제를 확인해보려고 useEffect 안에 `console.log("topPosition : ",topPosition)`을 넣어봤다.
+그랬더니 콘솔에 아무것도 찍히지 않았다.
+클로드는 `const [isComponentMounted, setIsComponentMounted] = useState(false);` 를 추가해서 `isCompnentMounted`를 위의 의존성 배열에 넣으라고 함.
+그래도 안됨.
+#### 안되는 코드
+```tsx
+// Second useEffect for button positioning with dependencies
+  useEffect(() => {
+    console.log("Button positioning effect running");
+    console.log("Textarea ref exists:", !!textareaRef.current);
+    console.log("Button ref exists:", !!buttonRef.current);
+
+    if (textareaRef.current && buttonRef.current) {
+      // Add a small delay to ensure DOM is fully rendered
+      setTimeout(() => {
+        const textarea = textareaRef.current;
+        const button = buttonRef.current;
+
+        if (!textarea || !button) {
+          console.log("Refs no longer valid");
+          return;
+        }
+
+        const form = textarea.parentElement;
+        if (!form) {
+          console.log("Form parent not found");
+          return;
+        }
+
+        // Log all dimensions for debugging
+        const formRect = form.getBoundingClientRect();
+        const buttonRect = button.getBoundingClientRect();
+
+        console.log("Form dimensions:", formRect);
+        console.log("Button dimensions:", buttonRect);
+
+        // Calculate the top position
+        const topPosition = formRect.height / 2 - buttonRect.height / 2;
+        console.log("topPosition:", topPosition);
+
+        // Fix the button position
+        button.style.top = `${topPosition}px`;
+        console.log("Button position set");
+      }, 100); // Small delay to ensure rendering
+    }
+  }, [isComponentMounted]); // Run when component is confirmed mounted
+```
+- 타임아웃을 줘서 ref들이 null이 아니게될 때까지 기다림.
+#### 되는 코드
+```tsx
+ useEffect(() => {
+    // 이 조건을 추가하여 두 ref가 모두 존재할 때만 실행합니다
+    if (textareaRef.current && buttonRef.current) {
+      console.log("Refs now available, positioning button");
+
+      const textarea = textareaRef.current;
+      const button = buttonRef.current;
+      const form = textarea.parentElement;
+
+      if (!form) {
+        console.log("Form parent not found");
+        return;
+      }
+
+      const formRect = form.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
+
+      console.log("Form dimensions:", formRect);
+      console.log("Button dimensions:", buttonRect);
+
+      const topPosition = formRect.height / 2 - buttonRect.height / 2;
+      console.log("topPosition:", topPosition);
+
+      button.style.top = `${topPosition}px`;
+      console.log("Button position set");
+    } else {
+      console.log("Refs not yet available");
+    }
+  }, [textareaRef.current, buttonRef.current, isComponentMounted]);
+```
+- 의존성 배열에 ref들을 넣어서 컴포넌트 전체가 렌더링된 후에 다시 실행되게 했다.
+
+## 훅 사용 규칙 에러
+[[A change in the order of Hooks#chat-box.tsx]]
