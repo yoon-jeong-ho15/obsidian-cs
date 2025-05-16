@@ -352,3 +352,41 @@ useEffect(() => {
 
 ## 훅 사용 규칙 에러
 [[A change in the order of Hooks#chat-box.tsx]]
+
+# NoProfile 컴포넌트 크기 변경 안됨
+#tailwind
+[[CSS(tailwind) 에러#yoon-pf|코드는 여기 참고]]
+`<NoProfile size="..." />` 이렇게 컴포넌트를 하나 만들고 크기만 따로 props로 넘겨주면서 필요할때마다 다른 크기의 컴포넌트를 만들어 활용하려고 했다.
+그런데, 6만 제대로 크기가 조절되고 나머지 모든 숫자들은 부모가 가진 `flex` 때문에 꽉 차버리게 됐다.
+
+알고보니 테일윈드가 사용하는 JIT 방식 컴파일링 때문. [[Tailwind#JIT 컴파일러]]
+그래서 방법은 
+1. safelist를 추가해주거나, 
+2. `classname = {{ full? "size-full" : "size-6"}}` 이렇게 조건에 따라 둘 다 가능하도록 적어두면 JIT 컴파일러도 둘 다 생성해두기 때문에 가능하다.
+3. 또 (아마 Next.js 튜토리얼에서 본거같은데) `<NoProfile size="md" />` 이렇게 넘기고 NoProfile 컴포넌트 안에서  sm,md,lg,xl,full 이런식으로 분류하고 각각 크기들을 미리 정의해둘 수 있다. 그리고 그 변수를 활용하는것. *매핑* 방식
+	- 난 공부를 위해 이 방법을 택했다.
+```Tsx
+export default function NoProfile({ sizeprop }: { sizeprop?: "full" | "sm" }) {
+  const size = {
+    sm: "size-6",
+    full: "size-full",
+  };
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className={`${size[sizeprop ? sizeprop : "full"]}`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      />
+    </svg>
+  );
+}
+```
