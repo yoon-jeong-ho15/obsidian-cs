@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "d7288766598266af",
+        "id": "6b6bab5eb14f07f2",
         "type": "tabs",
         "children": [
           {
-            "id": "ec7e7ff64ae389b1",
+            "id": "5c18f738fdd5b278",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "에러노트/ts에러/ts(7053).md",
+                "file": "에러노트/Supabase/supabaseUrl is required.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ts(7053)"
-            }
-          },
-          {
-            "id": "0d544a7ea0b1093a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "프로젝트 기록/yoon-pf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "yoon-pf"
-            }
-          },
-          {
-            "id": "c2afa6921cbfb73e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "사전/Tailwind.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tailwind"
-            }
-          },
-          {
-            "id": "ccd725b97a289826",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "에러노트/CSS(tailwind) 에러.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CSS(tailwind) 에러"
+              "title": "supabaseUrl is required"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "프로젝트 기록/yoon-pf.md",
+                "file": "에러노트/Supabase/supabaseUrl is required.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of yoon-pf"
+              "title": "Outline of supabaseUrl is required"
             }
           },
           {
@@ -222,13 +179,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0d544a7ea0b1093a",
+  "active": "5c18f738fdd5b278",
   "lastOpenFiles": [
     "에러노트/ts에러/ts(7053).md",
-    "에러노트/CSS(tailwind) 에러.md",
     "사전/Tailwind.md",
-    "에러노트/ts에러/ts(2769).md",
+    "에러노트/CSS(tailwind) 에러.md",
+    "프로젝트 기록/sqld.md",
     "프로젝트 기록/yoon-pf.md",
+    "Untitled.md",
+    "에러노트/ts에러/ts(2769).md",
     "사전/Next.js(+react)/Rules of Hooks.md",
     "에러노트/NextAuth.js 에러.md",
     "에러노트/nextjs에러/A change in the order of Hooks.md",
@@ -251,8 +210,6 @@
     "사전/Next.js(+react)/dynamic().md",
     "사전/NextAuth 라이브러리.md",
     "사전/Next.js(+react)/pre-rendering.md",
-    "사전/Next.js(+react)/Suspense.md",
-    "에러노트/sqlite 에러.md",
     "사전/Java",
     "클로드",
     "사전/TypeScript(+js)/Untitled",
