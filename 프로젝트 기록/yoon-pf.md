@@ -202,7 +202,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server
 
 swr (stale while revalidate)
 ## sse
-
+`more-nav.tsx`에서도 세션을 사용하기 위해,
+`more/layout.tsx`에서 세션프로바이더를 사용하기로 하고, `chat/page.tsx`에서 세션프로바이더를 뺐더니
+[[모듈 팩토리 오류#chatroom-provider]] 에러 발생
 
 # useSession이 데이터를 가져오지 못함
 `chat/page.tsx`에서 `await auth()`로 세션을 가져옴.
