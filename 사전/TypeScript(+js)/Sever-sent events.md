@@ -8,7 +8,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server
 
 ## EventSource
 자바스크립트 인터페이스.
-EventSource 객체는 HTTP 서버와의 지속적인 연결을 가진다. 
+EventSource 객체는 HTTP 서버와의 *지속적인 연결*을 가진다. 
 이벤트를 `text/event-stream` 형식으로 전달한다.
 `EventSource.close()`를 통해 명시적으로 연결을 닫아줘야 연결이 해제된다. 
 

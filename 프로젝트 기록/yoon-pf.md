@@ -201,6 +201,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events
 https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
 
 swr (stale while revalidate)
+## sse
+
 
 # useSession이 데이터를 가져오지 못함
 `chat/page.tsx`에서 `await auth()`로 세션을 가져옴.
@@ -390,3 +392,4 @@ export default function NoProfile({ sizeprop }: { sizeprop?: "full" | "sm" }) {
   );
 }
 ```
+
