@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "에러노트/nextjs에러/모듈 팩토리 오류.md",
+                "file": "에러노트/motion.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "모듈 팩토리 오류"
+              "title": "motion"
             }
           },
           {
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "에러노트/nextjs에러/모듈 팩토리 오류.md",
+                "file": "에러노트/motion.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 모듈 팩토리 오류"
+              "title": "Outline of motion"
             }
           },
           {
@@ -224,9 +224,10 @@
   },
   "active": "481974a70a4b53ae",
   "lastOpenFiles": [
+    "에러노트/nextjs에러/모듈 팩토리 오류.md",
+    "에러노트/motion.md",
     "사전/Next.js(+react)/HMR.md",
     "클로드/next.js 팩토리 모듈.md",
-    "에러노트/nextjs에러/모듈 팩토리 오류.md",
     "사전/Next.js(+react)/Server Components.md",
     "프로젝트 기록/yoon-pf.md",
     "클로드/의존성 주입 DI.md",
@@ -252,7 +253,6 @@
     "사전/PostgreSQL(+RDBMS)",
     "에러노트/nextjs에러/ReferenceError-document is not defined.md",
     "사전/Next.js(+react)/useRef.md",
-    "사전/Next.js(+react)/useState.md",
     "사전/Web",
     "사전/Java",
     "클로드",
