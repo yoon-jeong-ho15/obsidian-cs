@@ -40,3 +40,11 @@
 - 기본 엔터티
 - 중심 엔터티
 - 행위 엔터티
+
+순수 관계 연산자 :
+- select
+- project
+- join
+- divide
+
+배치(batch) 작업 : 

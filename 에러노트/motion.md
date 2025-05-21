@@ -37,4 +37,4 @@ import { motion } from "motion/react"
 // React Server Components
 import * as motion from "motion/react-client"
 ```
-멍청. 튜토리얼 맨 앞에 나온다. 서버 컴포넌트에서는 `motion/react-client`패키지에서 불러왔어야.
+멍청. 튜토리얼 맨 앞에 나온다. 서버 컴포넌트에서는 `motion/react-client`패키지에서 불러왔어야.
