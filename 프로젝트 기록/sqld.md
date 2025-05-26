@@ -48,3 +48,6 @@
 - divide
 
 배치(batch) 작업 : 
+
+self-join : 
+running total을 구할때 사용
