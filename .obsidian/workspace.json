@@ -35,7 +35,8 @@
               "title": "sqld"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,11 +195,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "37c1288a069b9dd7",
+  "active": "16a2adefd41afe05",
   "lastOpenFiles": [
+    "사전/RDBMS/데이터 모델링.md",
     "프로젝트 기록/sqld.md",
     "사전/RDBMS/속성.md",
-    "사전/RDBMS/데이터 모델링.md",
     "사전/RDBMS/스키마.md",
     "사전/RDBMS/exists.md",
     "사전/RDBMS/null 계산.md",

@@ -107,3 +107,23 @@ running total을 구할때 사용
 
 *55번*
 - 
+
+57번
+- `group by grade, job`이랑 `group by job, grade`는 같은 결과를 산출한다.
+
+58번
+- 아래의 두 함수는 같은 결과를 출력
+	- `round(ratio_to_report(급여) over (partition by 부서코드),2)` 
+	- `round(급여/부서급여합,2) ... from ( .. sum(급여) over (partition by 부서코드) 부서급여 합 ..`
+- 누적합
+	- `sum(급여) over (partion by 부서코드 order by 사원번호) 부서급여합`
+	- 한 사원에 대해서 데이터를 볼 때, 해당 사원의 `부서급여합`은 부서 전체가 아니라 사원번호로 순서지었을 때 해당 사원의 순서까지의 누적 합이 된다.
+
+62번
+- connect by 절에 작성된 조건은 where절에 작성된 조건과 달리 부모에는 적용이 되지 않는다. 
+
+63번
+- where 절은 모든 전개를 진행한 이후 필터 조건으로서 조건을 만족하는 데이터만을 추출하는 데 활용된다.
+
+64번
+- 
