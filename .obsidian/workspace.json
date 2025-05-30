@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "사전/RDBMS/데이터 모델링.md",
+                "file": "사전/RDBMS/group by.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "데이터 모델링"
+              "title": "group by"
             }
           },
           {
@@ -197,21 +197,22 @@
   },
   "active": "16a2adefd41afe05",
   "lastOpenFiles": [
-    "사전/RDBMS/데이터 모델링.md",
+    "사전/RDBMS/group by.md",
+    "사전/RDBMS/DISTINCT.md",
     "프로젝트 기록/sqld.md",
+    "사전/RDBMS/exists.md",
+    "사전/RDBMS/데이터 모델링.md",
+    "프로젝트 기록/yoon-pf.md",
+    "사전/RDBMS/윈도우 함수.md",
     "사전/RDBMS/속성.md",
     "사전/RDBMS/스키마.md",
-    "사전/RDBMS/exists.md",
     "사전/RDBMS/null 계산.md",
     "프로젝트 기록/GiveHub.md",
-    "사전/RDBMS/group by.md",
-    "사전/RDBMS/윈도우 함수.md",
     "사전/AWS S3.md",
     "에러노트/S3 에러.md",
     "사전/Clourflare/R2.md",
     "에러노트/Untitled",
     "클로드/next.js 팩토리 모듈.md",
-    "프로젝트 기록/yoon-pf.md",
     "사전/Next.js(+react)/HMR.md",
     "사전/Clourflare",
     "사전/RDBMS/오라클 예문/유저 만들기.md",
@@ -225,7 +226,6 @@
     "에러노트/MIME Type mismatch.md",
     "사전/Vite",
     "에러노트/Supabase/supabaseUrl is required.md",
-    "에러노트/ts에러/ts(7053).md",
     "사전/RDBMS/오라클 예문",
     "사전/RDBMS",
     "사전/Web",

@@ -14,4 +14,5 @@
 
 ## cube
 `group by cube (col1, col2)`는 col1+col2(col1 기분으로 분류 후에 거기서 다시 col2 기준으로 분류), col1, col2 가 나오고 거기에 모든 행 전체에 대한 데이터를 산출한다.
-즉 `group by cube (col1, col2)` = `group by grouping sets ((col1,col2), (col1), (col2), ())` 와 같다.
+즉 `group by cube (col1, col2)` = 
+`group by grouping sets ((col1,col2), (col1), (col2), ())` 와 같다.
