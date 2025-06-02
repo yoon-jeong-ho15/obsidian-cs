@@ -10,3 +10,8 @@ True if chunked encoding should be used.
 #### 노트
 [[S3 에러#GiveHub]]이 에러의 원인이 된 설정.
 이걸 false설정을 주지 않았더니 데이터가 여러 조각으로 나눠져서 보내지는데 그때마다 검증을 할 수 없어서 에러가 발생했던것.
+
+## Presigned URL
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html
+
