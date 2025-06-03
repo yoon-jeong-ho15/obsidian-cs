@@ -395,3 +395,55 @@ export default function NoProfile({ sizeprop }: { sizeprop?: "full" | "sm" }) {
 }
 ```
 
+# 로그인 
+[[NextAuth 라이브러리#yoon-pf]]
+## `action.ts`에서 정의한 `authenticate()`
+nextjs 튜토리얼 프로젝트를 그대로 가져와서 처음엔 이렇게 별도의 authenticate 함수를 정의하고 사용했다.
+```ts
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    console.log("authenticate() formData : ", formData);
+    await signIn("credentials", formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      const authError = error as { type?: string };
+      switch (authError.type) {
+        case "CredentialsSignin":
+          return "Invalid credentials.";
+        default:
+          return "Something went wrong.";
+      }
+    }
+    throw error;
+  }
+}
+```
+여기서 사용되는 `signIn`은 `auth.ts`에서 `NextAuth()`로 만든것.
+
+## `login-form.tsx`에서 사용하는 `signIn()`
+그런데 로그인 컴포넌트에서는 정작 다른 함수 사용중. 
+```tsx
+import { signIn } from "next-auth/react";
+
+  const credentialsAction = (formData: FormData) => {
+    signIn("credentials", {
+      username: formData.get("username"),
+      password: formData.get("password"),
+    });
+  };
+  
+    return (
+	    <form
+	      action={credentialsAction}
+```
+
+직접 `next-auth/react`패키지에서 가져온 그대로 사용한다.
+
+> [!1] 그런데 어떻게 내가 `auth.ts`에 적어둔 설정들이 반영되는거지? 
+> session, jwt 콜백과 credentials 설정들 등등.
+> `/auth/[...nextauth]/route.ts` 에서 handler를 `auth.ts`에서 불러오기 때문에 가능하다.
+
+# middleware.ts

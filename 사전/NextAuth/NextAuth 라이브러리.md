@@ -1,4 +1,3 @@
-# 개념
 
 # 예시
 ## yoon-pf
@@ -89,7 +88,7 @@ export const { auth, signIn, signOut } = NextAuth({
 내가 인자로 넣은것들을 가지고 `auth`, `signIn`, `signOut` 함수를 가져온다.
 로그인을 할 때 `login-form.tsx`에서 
 `const [errorMessage, formAction] = useActionState(authenticate, undefined);`
-를 통해 `action.ts`에 있는 `authenticate()`를 실행.
+를 통해 `action.ts`에 있는 `authenticate()`를 실행. [[useActionState]]
 거기서 `await signIn("credentials", formData)`을 실행.
 #### 과정
 ##### next-auth index.ts 

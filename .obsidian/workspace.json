@@ -8,59 +8,45 @@
         "type": "tabs",
         "children": [
           {
-            "id": "cb443d978dd18bb2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "프로젝트 기록/GiveHub.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "GiveHub"
-            }
-          },
-          {
-            "id": "3b3b8905644c6def",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "에러노트/S3 에러.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "S3 에러"
-            }
-          },
-          {
             "id": "33a62188fafaa616",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "사전/Clourflare/R2.md",
+                "file": "사전/NextAuth/useSession.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "R2"
+              "title": "useSession"
             }
           },
           {
-            "id": "d3c9a98f0f18a07d",
+            "id": "28f6817c6897b12f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "사전/AWS S3.md",
+                "file": "사전/NextAuth/NextAuth 라이브러리.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AWS S3"
+              "title": "NextAuth 라이브러리"
+            }
+          },
+          {
+            "id": "fd885da08c7baa21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "프로젝트 기록/yoon-pf.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "yoon-pf"
             }
           }
         ],
@@ -223,18 +209,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "33a62188fafaa616",
+  "active": "fd885da08c7baa21",
   "lastOpenFiles": [
+    "사전/NextAuth/NextAuth 라이브러리.md",
+    "사전/NextAuth/useSession.md",
+    "프로젝트 기록/yoon-pf.md",
+    "사전/Next.js(+react)/useActionState.md",
     "사전/AWS S3.md",
-    "사전/Clourflare/R2.md",
-    "에러노트/S3 에러.md",
     "프로젝트 기록/GiveHub.md",
+    "에러노트/S3 에러.md",
+    "사전/NextAuth",
+    "사전/Next.js(+react)/useCallback.md",
+    "사전/Clourflare/R2.md",
     "사전/RDBMS/group by.md",
     "프로젝트 기록/sqld.md",
     "사전/RDBMS/DISTINCT.md",
     "사전/RDBMS/exists.md",
     "사전/RDBMS/데이터 모델링.md",
-    "프로젝트 기록/yoon-pf.md",
     "사전/RDBMS/윈도우 함수.md",
     "사전/RDBMS/속성.md",
     "사전/RDBMS/스키마.md",
@@ -249,17 +240,12 @@
     "사전/Next.js(+react)/Server Components.md",
     "클로드/의존성 주입 DI.md",
     "사전/TypeScript(+js)/Sever-sent events.md",
-    "사전/TypeScript(+js)/EventSource.md",
-    "사전/Vite/미들웨어 모드.md",
-    "에러노트/MIME Type mismatch.md",
     "사전/Vite",
-    "에러노트/Supabase/supabaseUrl is required.md",
     "사전/RDBMS/오라클 예문",
     "사전/RDBMS",
     "사전/Web",
     "사전/Java",
     "클로드",
-    "사전/TypeScript(+js)/Untitled",
-    "에러노트/Express 에러"
+    "사전/TypeScript(+js)/Untitled"
   ]
 }
