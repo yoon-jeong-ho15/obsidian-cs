@@ -4,39 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6a1a02012163473d",
+        "id": "9480fff73d44e087",
         "type": "tabs",
         "children": [
           {
-            "id": "33a62188fafaa616",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "사전/NextAuth/useSession.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "useSession"
-            }
-          },
-          {
-            "id": "28f6817c6897b12f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "사전/NextAuth/NextAuth 라이브러리.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "NextAuth 라이브러리"
-            }
-          },
-          {
-            "id": "fd885da08c7baa21",
+            "id": "6ad1261a4097c46d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -49,8 +21,7 @@
               "title": "yoon-pf"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,11 +180,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fd885da08c7baa21",
+  "active": "6ad1261a4097c46d",
   "lastOpenFiles": [
-    "사전/NextAuth/NextAuth 라이브러리.md",
-    "사전/NextAuth/useSession.md",
+    "사전/RDBMS/비교.md",
     "프로젝트 기록/yoon-pf.md",
+    "사전/NextAuth/useSession.md",
+    "에러노트/next 케시 에러.md",
+    "사전/NextAuth/NextAuth 라이브러리.md",
+    "사전/Next.js(+react)/middleware.md",
     "사전/Next.js(+react)/useActionState.md",
     "사전/AWS S3.md",
     "프로젝트 기록/GiveHub.md",
@@ -237,9 +211,6 @@
     "사전/RDBMS/오라클 예문/유저 만들기.md",
     "에러노트/motion.md",
     "에러노트/nextjs에러/모듈 팩토리 오류.md",
-    "사전/Next.js(+react)/Server Components.md",
-    "클로드/의존성 주입 DI.md",
-    "사전/TypeScript(+js)/Sever-sent events.md",
     "사전/Vite",
     "사전/RDBMS/오라클 예문",
     "사전/RDBMS",

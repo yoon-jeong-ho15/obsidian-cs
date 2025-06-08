@@ -1,5 +1,5 @@
 dfNext.js + supabase 로 진행한 프로젝트
-라이브러리 : Quill, Socket.IO
+라이브러리 : Quill.js, Auth.js, motion
 # 퀼
 ## delta와 디비
 ### 증상
@@ -31,6 +31,9 @@ export async function createBoard(title: string, content: Delta | null) {
 }
 ```
 serialization이 문제라고 한다.
+클라이언트에서 서버로 객체를 전송할때 자동으로 직렬화를 해서 전달하는데,
+객체가 함수를 가지고 있으면 직렬화 과정에서 문제가 발생해서 객체 그대로 전달되지 않는것 같다.
+그래서 `stringify()`로 문자열로 만들어 문자열 상태로 저장하고, 조회할때 `JSON.parse()`로 다시 객체로 만들어 화면에 보여준다.
 ## 뷰어에서 에디터가 두개가 됨.
 ### 증상
 처음에 게시글 조회에 들어가면 `<div class="ql-container">`가 두개가 생김.
@@ -189,7 +192,7 @@ Uncaught (in promise) Error: NEXT_REDIRECT
     dispatchDiscreteEvent react-dom-client.development.js:20783
 
 # 채팅
-Socket.IO라는걸 사용해보려고 했는데, vercel에서는 websocket 서버를 배포할 수 없다고.
+Socket.IO라는걸 사용해보려고 했는데, vercel에서는 websocket 서버를 배포할 수 없다고. vercel은 서버리스 환경이라 지속적인 연결을 제공하지 않음.
 https://socket.io/how-to/use-with-nextjs
 https://nextjs.org/docs/pages/guides/custom-server
 
@@ -205,6 +208,16 @@ swr (stale while revalidate)
 `more-nav.tsx`에서도 세션을 사용하기 위해,
 `more/layout.tsx`에서 세션프로바이더를 사용하기로 하고, `chat/page.tsx`에서 세션프로바이더를 뺐더니
 [[모듈 팩토리 오류#chatroom-provider]] 에러 발생
+그런데 sse도 지속적인 연결을 필요로 하기 때문에 vercel에서 마찬가지로 사용할 수 없었다.
+
+## sse 사용 불가 supabase realtime 사용
+sse도 마찬가지로 사용불가.
+왜냐하면 SSE도 마찬가지로 서버리스 환경에서는 지속적인 연결을 유지하지 못하기 때문이다.
+내 조사가 미흡하고 짧았다.
+vercel의 서버리스 함수는 무료판에서는 10초후에 자동으로 종료됨.
+https://vercel.com/blog/an-introduction-to-streaming-on-the-web
+이 링크를 읽어보면 
+
 
 # useSession이 데이터를 가져오지 못함
 `chat/page.tsx`에서 `await auth()`로 세션을 가져옴.
@@ -446,4 +459,65 @@ import { signIn } from "next-auth/react";
 > session, jwt 콜백과 credentials 설정들 등등.
 > `/auth/[...nextauth]/route.ts` 에서 handler를 `auth.ts`에서 불러오기 때문에 가능하다.
 
-# middleware.ts
+# 채팅방 데이터 가져오기
+데이터베이스에서 (채팅방id, 제목, 유저id, 유저명, 프로픽사진) 형식으로 테이블을 가져온다.
+이걸 map 자료형에 저장 `map<Chatroom, Chatroomuser[]>`.
+그런데 `chatroom={id:string, title: string}` 에서 id와 title이 똑같더라도 다른 객체로 판단해서
+`(방1, 사용자들[])` 로 되는게 아니라 `(방1, [사용자1])` `(방1, [사용자2])` 처럼 됐다.
+
+자바에서는 새로운 클래스를 정의하고 거기서 `equals()` 함수를 재정의하면 방의 id와 title이 같다면 같은 객체로 취급해서 `if (chatrooms.has(room)) {chatrooms.get(room)?.push(user);}` 가 제대로 작동할것인데, 자바스크립트에서는 이렇게 value equality 방식을 사용하지 않고 *reference equality* 방식만을 사용하기 때문에 불가능
+
+이걸 해결하기 위해서 map의 구조를 `<key=roomId, value={room, user[]}>` 이렇게 바꾸는 방법이 있고,
+내가 채택한 방법처럼 room을 null로 먼저 생성하고 chatrooms 맵에서 가져오는것으로 해결할 수 있다.
+```ts
+export async function fetchChatrooms(username: string) {
+  // console.log("fetchChatrooms username : ", username);
+  const { data, error } = await supabase.rpc("get_chatroom_data", {
+    p_username: username,
+  });
+  const chatrooms: ChatroomMap = new Map();
+  data.map((obj: Record<string, unknown>) => {
+    console.log("obj", obj);
+
+    const roomId = obj.id as string;
+    const roomtitle = obj.title as string;
+
+    //채팅방
+    let room = null;
+    for (const [existingRoom] of chatrooms) {
+      if (existingRoom.id === roomId) {
+        room = existingRoom;
+        break;
+      }
+    }
+
+    if (!room) {
+      room = {
+        id: roomId,
+        title: roomtitle,
+      };
+    }
+
+    //유저
+    const user = {
+      username: obj.username as string,
+      id: obj.uid as string,
+      profilePic: obj.profile_pic as string,
+    };
+
+    if (chatrooms.has(room)) {
+      chatrooms.get(room)?.push(user);
+    } else {
+      chatrooms.set(room, [user]);
+    }
+  });
+
+  console.log(chatrooms);
+  if (error) {
+    console.error("Error fetching data : ", error);
+    throw new Error("Failed to fetch Chatrooms");
+  } else {
+    return chatrooms;
+  }
+}
+```
