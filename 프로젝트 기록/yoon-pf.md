@@ -1,8 +1,8 @@
 dfNext.js + supabase 로 진행한 프로젝트
 라이브러리 : Quill.js, Auth.js, motion
 # 퀼
-## delta와 디비
-### 증상
+## delta와 디비 : 직렬화 문제
+### 문제 상황
 ```tsx
 const handleSave = () => {
 	const content: Delta | null = quillRef.current?.getContents() || null;
@@ -13,6 +13,7 @@ const handleSave = () => {
 };
 ```
 페이지에서 저장버튼을 누르면 위의 함수를 실행한다.
+
 여기서 content를 찍어보면 `Object { ops: […] }` 라고 나온다.
 그런데 `action.ts`에서 content를 찍어보면 `content :  [Function (anonymous)]`라고 나온다.
 ```ts
@@ -35,7 +36,7 @@ serialization이 문제라고 한다.
 객체가 함수를 가지고 있으면 직렬화 과정에서 문제가 발생해서 객체 그대로 전달되지 않는것 같다.
 그래서 `stringify()`로 문자열로 만들어 문자열 상태로 저장하고, 조회할때 `JSON.parse()`로 다시 객체로 만들어 화면에 보여준다.
 ## 뷰어에서 에디터가 두개가 됨.
-### 증상
+### 문제상황
 처음에 게시글 조회에 들어가면 `<div class="ql-container">`가 두개가 생김.
 새로고침하면 하나만 남음.
 ### 코드
@@ -90,6 +91,9 @@ export default function Viewer({ content }: { content: string }) {
 실제로 vercel의 배포판에서 보니까 게시글이 두번 등장하지 않음.
 
 ## editor-wrapper에서 수정시 content 안넘어감
+### 문제 상황
+editor에서는 db에서 가지고 온 
+### 코드
 ```tsx
 "use client";
 import Quill from "quill";
@@ -105,6 +109,7 @@ export default function EditorWrapper({
 
   useEffect(() => {
     if (!quillRef.current) return;
+    
     try {
       const delta = JSON.parse(initialValue);
       quillRef.current.setContents(delta);
@@ -130,8 +135,12 @@ export default function EditorWrapper({
 }
 
 ```
+
+### 설명
 왜 content가 추가가 안되느냐 하면 이벤트 리스너가  제출 이후에 등록되서 그런다고한다.
 문제점 1) 여기에 의존성 배열이 없고 2) 이벤트 리스너를 해제하지 않고 추가하고 3)이벤트 핸들러가 너무 늦게 실행한다.
+
+### 해결
 해결책 : content를 담을 input hidden을 넣고, useState로 값을 입력해준다.
 
 # 수파베이스
