@@ -235,7 +235,7 @@ https://vercel.com/blog/an-introduction-to-streaming-on-the-web
 [[NextAuth.js 에러#profile, chat]]
 
 # 버튼 위치 고정
-## 버튼 위치 고정
+## 버튼 위치 고정1
 `chat-box.tsx`에서 전송버튼 위치를 부모 요소에서 `flex items-center`로 위치를 지정해줬음.
 근데 그러면 단점이 textarea에 넣는 글이 길어지면서 form의 높이가 늘어나면 버튼의 위치도 form의 가운데가 되면서 점점 올라감.
 그래서 textare의 onInput 핸들러에 버튼의 위치를 조절하는 코드를 넣었음
@@ -530,3 +530,5 @@ export async function fetchChatrooms(username: string) {
   }
 }
 ```
+
+# useContext의 범위
