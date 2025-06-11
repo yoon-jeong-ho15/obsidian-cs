@@ -468,7 +468,7 @@ import { signIn } from "next-auth/react";
 > session, jwt 콜백과 credentials 설정들 등등.
 > `/auth/[...nextauth]/route.ts` 에서 handler를 `auth.ts`에서 불러오기 때문에 가능하다.
 
-# 채팅방 데이터 가져오기
+# reference equality
 데이터베이스에서 (채팅방id, 제목, 유저id, 유저명, 프로픽사진) 형식으로 테이블을 가져온다.
 이걸 map 자료형에 저장 `map<Chatroom, Chatroomuser[]>`.
 그런데 `chatroom={id:string, title: string}` 에서 id와 title이 똑같더라도 다른 객체로 판단해서
@@ -531,4 +531,4 @@ export async function fetchChatrooms(username: string) {
 }
 ```
 
-# useContext의 범위
+# 새로고침시에 nav의 selectedTab 초기화
