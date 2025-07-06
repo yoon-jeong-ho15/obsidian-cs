@@ -532,3 +532,26 @@ export async function fetchChatrooms(username: string) {
 ```
 
 # 새로고침시에 nav의 selectedTab 초기화
+# `auth.config.ts` 에서 세션유저가 비어있는 값
+```Ts
+export const authConfig = {
+  pages: {
+    signIn: "/login",
+  },
+  callbacks: {
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      console.log("=== Auth Debug Info ===");
+      console.log("auth:", auth);
+      console.log("auth?.user:", auth?.user);
+      console.log("isLoggedIn:", isLoggedIn);
+      console.log("nextUrl.pathname:", nextUrl.pathname);
+```
+이렇게 했더니 결과가 다음과같이 텅 비어서 나온다.
+```
+=== Auth Debug Info ===
+auth: { user: {}, expires: '2025-08-05T06:54:37.565Z' }
+auth?.user: {}
+isLoggedIn: true
+nextUrl.pathname: /more/chat
+```
