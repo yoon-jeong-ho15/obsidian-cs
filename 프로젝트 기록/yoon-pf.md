@@ -533,6 +533,7 @@ export async function fetchChatrooms(username: string) {
 
 # 새로고침시에 nav의 selectedTab 초기화
 # `auth.config.ts` 에서 세션유저가 비어있는 값
+## 문제 상황
 ```Ts
 export const authConfig = {
   pages: {
@@ -555,3 +556,37 @@ auth?.user: {}
 isLoggedIn: true
 nextUrl.pathname: /more/chat
 ```
+
+## 원인
+`auth.config.ts`에  jwt, session 콜백이 작성되어 있지 않기 때문에. 이 콜백들은 jwt토큰과 세션을 어떻게 저장할지에 대해 지정하는것인데.
+`auth.ts`는 `auth.config.ts`에서 설정을 불러와서 적용한다.
+```Ts
+import { authConfig } from "./auth.config";
+
+//...
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig, // <<<< 여기
+  providers: [
+    Credentials({
+      credentials: {
+      //...
+      
+```
+그래서 `auth.ts`에 적혀있던 callback 내용들을 `auth.config.ts`는 모르는 상태라서, jwt토큰을 제대로 읽어낼 수 없었던 것.
+
+## 해결
+토큰과 세션 콜백을 `auth.config.ts`로 옮겼다.
+
+> [!1]- 그런데 아예 `auth.config.ts`만 사용하지 않는 이유는?
+> 애초에 `auth.ts`에 작성된 내용들도 다 한곳에 모아서 거기서 어플리케이션이 사용할 `auth()`,`signIn()`, `signOUt()`등을 내보내면 되지 않은건가?
+> Vercel의 Edge Runtime 때문 [[Edge Runtime]] 
+> `middleware.ts`에서 사용하는 `Nextauth().auth`는 Edge-safe한 것이라고.
+
+
+
+# 왜 다른사람이 로그인 할 때 자꾸 에러가 발생할까?
+## 문제상황
+그다지 어렵지 않은 계정명(이름)과 비밀번호(생년월일 6자) 사용중이다.
+근데 같은 계정도 다른사람이 로그인할 때는 에러가 발생한다고 함. 
+내가 시도하면 되는데.
